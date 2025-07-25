@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amie Road 優惠券-使用流程</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(180deg, #EFC3B7 0%, #D68E7F 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .poster {
+            width: 800px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #E6AA97 0%, #D68E7F 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .brand-logo {
+            background:rgba(255, 200, 170, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .brand-text {
+            color: white;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .main-title {
+            color: white;
+            font-size: 2.8em;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 25px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #E6AA97, #D68E7F);
+            border-radius: 20px;
+            padding: 3px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(214, 142, 127, 0.2);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #E6AA97 0%, #D68E7F 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-right: 15px;
+            box-shadow: 0 4px 12px rgba(214, 142, 127, 0.4);
+        }
+
+        .step-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .step-image {
+            width: 100%;
+            height: 120px;
+            background: #f1f3f4;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #dee2e6;
+            font-size: 0.9em;
+            color: #6c757d;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-description {
+            color: #6c757d;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #D68E7F 0%, #C07866 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .flow-arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #D68E7F, #C07866);
+            border-radius: 1px;
+        }
+
+        .flow-arrow::after {
+            content: '→';
+            background: white;
+            color: #D68E7F;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 25px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .footer-text {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .step-card img {
+            width: 100px;   /* 或你想要的寬度 */
+            height: auto;   /* 保持比例 */
+            max-width: 100%;
+            display: block;
+            margin: 0 auto; /* 置中（可選） */
+        }
+        .step-description {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .poster {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2.2em;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <div class="brand-logo">
+                <div class="brand-text">AMIE ROAD</div>
+            </div>
+            <h1 class="main-title">優惠券-使用流程</h1>
+            <p class="subtitle">輕鬆六步驟，享受專屬折扣</p>
+        </div>
+
+        <div class="content">
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">會員登入</div>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/1-amieroad-icon.png" alt="amieroad-icon" style="height: 100px; width:80px;">
+                    </div>
+                    <div class="step-description">
+                        點擊 <span class="highlight"><a href="https://amieroad.com" target="_blank">Amie Road</a></span> 官方網站<span class="highlight">右上角的登入</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">LINE 登入</div>                    
+                    </div>
+                    <div class="step-image">
+                        <img src="images/2-line-login.png" alt="line" style="width:150px;">
+                    </div>
+                    <div class="step-description">
+                        使用 <span class="highlight">LINE 帳號</span> 進行身份驗證
+                    </div> 
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">電話驗證</div>                        
+                    </div>
+                    <div class="step-image">
+                        <img src="images/3-phone.png" alt="phone" style="width:400px;">
+                    </div>
+                    <div class="step-description">
+                        輸入對應電話號碼並 <span class="highlight">更新</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">VIP 會員卡</div>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/4-profile.png" alt="profile" style="width:120px;">
+                    </div>
+                    <div class="step-description">
+                        成功獲得 <span class="highlight">VIP Member Card</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <div class="step-title">查看優惠券</div>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/5-coupon.png" alt="coupon" style="width:300px;">
+                    </div>
+                    <div class="step-description">
+                        查看可用的 <span class="highlight">專屬優惠券</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <div class="step-title">購物車使用</div>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/6-shop.png" alt="shop" style="width:300px;">
+                    </div>
+                    <div class="step-description">
+                        在購物車 <span class="highlight">套用優惠券</span> 完成購買
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow"></div>
+        </div>
+
+        <div class="footer" />
+    </div>
+</body>
+</html>
