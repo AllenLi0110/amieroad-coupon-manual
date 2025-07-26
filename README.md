@@ -1,3 +1,3 @@
 # amieroad-poster
 
-![Amie Road Poster](images/amieroad-poster.png)
+![Amie Road Coupon Manual](images/amieroad-coupon-manual.png)
